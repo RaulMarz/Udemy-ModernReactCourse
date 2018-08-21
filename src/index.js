@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import YTSearch from 'youtube-api-search';
 import SearchBar from './components/search_bar';
 import VideoList from './components/video_list';
+import VideoDetail from './components/video_detail'
+
 const API_KEY = 'AIzaSyC_1SpujxRNqBEbt8qmIM62gHnW3f4OR9E';
 
 class App extends Component {
@@ -11,7 +13,7 @@ class App extends Component {
 
         this.state = {videos:[]};
 
-        YTSearch({key: API_KEY, term: 'Publicis one cup'}, videos => {
+        YTSearch({key: API_KEY, term: 'surfboard'}, videos => {
             //console.log(data);
             this.setState({videos});
         });
@@ -21,6 +23,7 @@ class App extends Component {
         return (
         <div>
             <SearchBar/>
+            <VideoDetail video={this.state.videos[0]}/>
             <VideoList videos={this.state.videos} />
         </div>
         ); // This is JSX -> html in javascript
